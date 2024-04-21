@@ -20,7 +20,7 @@ void *temp;
 int j;
 int max = r + 1;
 
-	srand(time(NULL));
+	srand(clock());
 
 	for(int i = p; i < r; i++){
 
@@ -56,9 +56,6 @@ int i = p-1;
 
 void *temp;
 
-	if(p >= r) 
-		return;
-
 	for(int j = p; j < r; j++){
 		if(*A[j] <= *A[r]){
 			i++;
@@ -79,24 +76,29 @@ void *temp;
 }
 
 int
-randomized_partition(int *A[], int p, int r){
-	randomize_inplace(A, p, r);
+randomized_partition(int *A[], int p, int r, char rand_flag){
+
+	if(rand_flag)
+		randomize_inplace(A, p, r);
+
 	return partition_ptr(A, p, r);
 }
 
 //randomized_quicksort, modified to use pointers
 //to elements being sorted
+// imp: r is the index of the last element not the number
+//	of elements
 void
-randomized_quicksort(int *A[], int p, int r){
+randomized_quicksort(int *A[], int p, int r, char rand_flag){
 
 int q;
 
 	if(p >= r) {
 		return;
 	}
-	q = randomized_partition(A, p, r);
+	q = randomized_partition(A, p, r, rand_flag);
 
-	randomized_quicksort(A, p, q-1);
-	randomized_quicksort(A, q+1, r);
+	randomized_quicksort(A, p, q-1, 0);
+	randomized_quicksort(A, q+1, r, 0);
 }
 

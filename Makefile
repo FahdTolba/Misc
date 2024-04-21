@@ -16,7 +16,7 @@ test_quicksort_mt.o:
 	gcc -c -o test_quicksort_mt.o test_quicksort_mt.c
 
 test_quicksort_mt: sortv1.o quicksort_mt.o test_quicksort_mt.o
-	gcc -o test_quicksort sortv1.o quicksort_mt.o test_quicksort_mt.o -lpthread
+	gcc -o test_quicksort_mt sortv1.o quicksort_mt.o test_quicksort_mt.o -lpthread
 
 clean:
 	rm *.o

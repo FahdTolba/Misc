@@ -33,7 +33,7 @@ thread_run(void *arg){
 	int hi = thr_arg->hi;
 	
 	//printf("Launching thread to sort %d - %d (%d)\n", lo, hi, hi-lo+1);
-	randomized_quicksort(A, lo, hi);
+	randomized_quicksort(A, lo, hi, 1);
 
 /*DBG
 	if(isSorted(A, lo,hi))
@@ -101,7 +101,7 @@ int tmp_lo_2, tmp_hi_2, size_2;
 		int hi = seg_arr[max_idx].hi;	 
 
 	//printf("partitioning %d - %d (%d)",lo, hi, hi-lo+1);
-		q = randomized_partition(A, lo, hi);
+		q = randomized_partition(A, lo, hi, 1);
 
 		//update boundaries
 		//seg_arr[max_idx].lo = old_lo; // unchanged
